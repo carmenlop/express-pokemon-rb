@@ -23,6 +23,9 @@ module.exports = {
       defense: {
         type: Sequelize.INTEGER
       },
+      pokemonNumber: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     imageUrl: DataTypes.STRING,
     hp: DataTypes.INTEGER,
     attack: DataTypes.INTEGER,
-    defense: DataTypes.INTEGER
+    defense: DataTypes.INTEGER,
+    pokemonNumber: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'pokemon',

@@ -13,7 +13,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+<<<<<<< HEAD
       models.pokemon.belongsToMany(models.user, { through: "usersPokemons" })
+=======
+      models.user.belongsToMany(models.pokemon, { through: "usersPokemons" })
+>>>>>>> submain
     }
 
     // validPassword

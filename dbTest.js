@@ -1,7 +1,7 @@
 const db = require('./models')
 
 // db.pokemon.create({
-//     name: 'pikachu',
+//     name: 'bulbasaur',
 //     imageUrl: 'urltest',
 //     hp: 50,
 //     attack: 50, 
@@ -11,7 +11,7 @@ const db = require('./models')
 // })
 
 // db.pokemon.findOne({
-//     where: { id: 1 }
+//     where: { id: 2 }
 // }).then(function(foundPokemon) {
 //     db.user.findOne({
 //         where: { id: 1 }

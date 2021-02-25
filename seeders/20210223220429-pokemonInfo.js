@@ -1,6 +1,7 @@
 'use strict';
 const db = require("../models")
 const axios = require("axios");
+const bcrypt = require("bcrypt");
 
 
   module.exports = {
@@ -10,24 +11,31 @@ const axios = require("axios");
       await db.sequelize.sync({force: true});
       console.log('All models synced');
   
-      //Delete and empty table
+      //Delete and empty table pokemons
       await queryInterface.bulkDelete('pokemons', null, {
         truncate: true, 
         cascade: true, 
         restartIdentity: true
       });
-      
-      for (let i = 1; i < 152; i++) {
 
+      //Delete and empty table users
+      await queryInterface.bulkDelete('users', null, {
+        truncate: true, 
+        cascade: true, 
+        restartIdentity: true
+      });
+      
+      const pk = 4
+      for (let i = 1; i < pk; i++) {
         console.log(i + " i check")
         const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/" + i
-        axios.get(pokemonUrl)
+        await axios.get(pokemonUrl)
           .then(function(apiInfo) {
             const pokemon = apiInfo.data
             console.log(pokemon.name + " " + i)
             
             // Populate pokemon table
-            const bulkPokemons =  queryInterface.bulkInsert('pokemons', [
+            const bulkPokemons = queryInterface.bulkInsert('pokemons', [
               
               {
                 name: pokemon.name,
@@ -40,10 +48,42 @@ const axios = require("axios");
                 pokemonNumber: pokemon.id
               },
             ], {returning: true})
-            console.log("bulk insert: ", bulkPokemons);
+            console.log("bulk pokemons insert: ", bulkPokemons);
+            
+            if (i === (pk -1)) {
+              console.log("What in gods name am I trying to do")
+            }
         })
       }
+
+      // Populate users table with users
+      const bulkUsers = queryInterface.bulkInsert('users', [ 
+        {
+          email: "dtest@test.com",
+          name: "Devin",
+          password: bcrypt.hashSync('password', 12),
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          email: "jtest@test.com",
+          name: "Jelleny",
+          password: bcrypt.hashSync('password', 12),
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          email: "ctest@test.com",
+          name: "Carmen",
+          password: bcrypt.hashSync('password', 12),
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+      ], {returning: true})
+      console.log("Bulk users insert: ", bulkUsers)
   },
+
+  
     
     down: async (queryInterface, Sequelize) => {
       /**

@@ -11,7 +11,7 @@ const db = require('./models')
 // })
 
 // db.pokemon.findOne({
-//     where: { id: 2 }
+//     where: { id: 3 }
 // }).then(function(foundPokemon) {
 //     db.user.findOne({
 //         where: { id: 1 }

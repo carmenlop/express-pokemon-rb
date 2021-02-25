@@ -19,6 +19,22 @@ router.get('/', isLoggedIn, (req, res) => {
     })
 })
 
+router.get('/add', (req, res) => {
+    res.render('userTeam/add.ejs')
+})
+
+router.post('/', isLoggedIn, (req, res) => {
+    db.user.findOne ({
+        where: {id: req.user.dataValues.id}
+    }).then((foundUser) => {
+        db.pokemon.findOne ({
+            where {
+                name: req.body.pokemonName
+            }
+        })
+
+})
+
 
 // delete pokemon
 // router.delete('/:id', isLoggedIn, (req, res) => {

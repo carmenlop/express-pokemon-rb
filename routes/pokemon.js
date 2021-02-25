@@ -5,34 +5,57 @@ router.use(express.static(__dirname + "/public/"))
 const isLoggedIn = require('../middleware/isLoggedIn')
 // router.use(methodOverride("_method")) 
 
-
+// GET shows current team
 router.get('/', isLoggedIn, (req, res) => {
-    // res.send("Hello")
     db.user.findOne ({
         where: {id: req.user.dataValues.id}
     }).then((foundUser) => {
         foundUser.getPokemons().then(function(foundPokemons) {
-            // console.log(foundPokemons)
-            // console.log(foundPokemons[0].dataValues.name)
             res.render('userTeam/show.ejs', { pokemons: foundPokemons })
         })
     })
 })
 
+// GET show add pokemon page
 router.get('/add', (req, res) => {
     res.render('userTeam/add.ejs')
 })
 
+// POST adds to usersPokemons model and adds notes, redirects back to pokemon team page
 router.post('/', isLoggedIn, (req, res) => {
     db.user.findOne ({
         where: {id: req.user.dataValues.id}
     }).then((foundUser) => {
         db.pokemon.findOne ({
-            where {
+            where: {
                 name: req.body.pokemonName
             }
+        }).then((foundPokemon) => {
+            foundUser.addPokemon(foundPokemon).then((relationInfo) => {
+                db.usersPokemons.update({
+                    note: req.body.pokemonNotes
+                }, { where: {
+                    pokemonId: relationInfo[0].dataValues.pokemonId
+                }
+                })
+                res.redirect('/pokemon')
+            })
         })
+        })
+})
 
+
+
+router.get('/edit/:id', (req, res) => {
+    db.usersPokemons.update({
+        note: req.body.note
+        }, {
+        where: { pokemonId: req.params.id }
+  }).then((updatedUsersPokemons) => {
+      console.log("___________")
+      console.log(updatedUsersPokemons)
+      res.render('userTeam/edit.ejs', { usersPokemons: updatedUsersPokemons })
+  })
 })
 
 
@@ -50,18 +73,5 @@ router.post('/', isLoggedIn, (req, res) => {
 //   })
 // })  
 
-router.get('/edit/:id', (req, res) => {
-    db.usersPokemons.update({
-        note: req.body.note
-        }, {
-        where: { pokemonId: req.params.id }
-  }).then((updatedUsersPokemons) => {
-      console.log("___________")
-      console.log(updatedUsersPokemons)
-      res.render('userTeam/edit.ejs', { usersPokemons: updatedUsersPokemons })
-  })
-})
 
-
-module.exports = router
-
+module.exports = router;

@@ -3,9 +3,10 @@
 <a href='/pokemon/add'>Add to team!</a>
 <ul>
     <% pokemons.forEach(function(pokemon) { %>
+      <img src='<%= pokemon.imageUrl %>'>
     <li><%= pokemon.name %> Notes: <%= pokemon.usersPokemons.dataValues.note %>
       <!-- This is the link to edit form -->
-      <a href='/pokemon/edit/<%=pokemon.id%>'>Edit</a>
+      <a href='/pokemon/edit/<%= pokemon.id %>'>Edit</a>
       <!-- This is the DELETE form -->
       <form method='POST' action='/pokemon/<%= pokemon.name %>/?_method=DELETE'>
         <input type='submit' value='Delete!'>  

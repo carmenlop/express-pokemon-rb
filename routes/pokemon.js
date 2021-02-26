@@ -45,18 +45,56 @@ router.post('/', isLoggedIn, (req, res) => {
 })
 
 
-
-router.get('/edit/:id', (req, res) => {
-    db.usersPokemons.update({
-        note: req.body.note
-        }, {
-        where: { pokemonId: req.params.id }
-  }).then((updatedUsersPokemons) => {
-      console.log("___________")
-      console.log(updatedUsersPokemons)
-      res.render('userTeam/edit.ejs', { usersPokemons: updatedUsersPokemons })
-  })
+router.get('/edit/:id', isLoggedIn, (req, res) => {
+    db.user.findOne ({
+        where: {id: req.user.dataValues.id}
+    }).then((foundUser) => {
+        foundUser.getPokemons().then((foundPokemons) => {
+            db.pokemon.findOne({
+                where: { id: req.params.id }
+            }).then((foundPokemon) => {
+                // console.log(foundPokemons)
+                // console.log(foundPokemon)
+                res.render('userTeam/edit.ejs', { pokemons: foundPokemons, pokemonInfo: foundPokemon })
+            })
+        })
+    })
 })
+
+// router.post('/edit/:id', isLoggedIn, (req, res) => {
+//     db.user.findOne ({
+//         where: {id: req.user.dataValues.id}
+//     }).then((foundUser) => {
+//         db.pokemon.findOne ({
+//             where: {
+//                 name: req.body.pokemonName
+//             }
+//         }).then((foundPokemon) => {
+//             foundUser.addPokemon(foundPokemon).then((relationInfo) => {
+//                 db.usersPokemons.update({
+//                     note: req.body.pokemonNotes
+//                 }, { where: {
+//                     pokemonId: relationInfo[0].dataValues.pokemonId
+//                 }
+//                 })
+//                 res.redirect('/pokemon')
+//             })
+//         })
+//         })
+// })
+
+
+// router.get('/edit', (req, res) => {
+//     db.usersPokemons.update({
+//         note: req.body.note
+//         }, {
+//         where: { pokemonId: req.params.id }
+//   }).then((updatedUsersPokemons) => {
+//       console.log("___________")
+//       console.log(updatedUsersPokemons)
+//       res.render('userTeam/edit.ejs', { usersPokemons: updatedUsersPokemons })
+//   })
+// })
 
 
 // delete pokemon

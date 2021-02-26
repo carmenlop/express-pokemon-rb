@@ -60,7 +60,7 @@ a:hover, a:active {
 .pkImage {
   grid-column: 1 / 2;
   grid-row: 1 / 3;
-  /* background-color: lightpink; */
+  background-color: lightpink;
 }
 
 .pkInfo {
@@ -69,14 +69,16 @@ a:hover, a:active {
   font-size: large;
   justify-self:stretch;
   display: grid;
-  /* background-color: rgb(98, 98, 214); */
+  /* grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 100px; */
+  background-color: rgb(98, 98, 214);
 }
 
 .pkName {
   font-size: x-large;
 }
 
-ul {
+.listInfo {
   padding-inline-start: 0px;
 }
 
@@ -84,6 +86,16 @@ ul {
   height: 160px;
 }
 
-.pokemon:last-child {
-  margin-left:0cm;
+/* .pokemon:last-child {
+   margin-left:0cm; 
+} */
+
+.deleteButton {
+  margin: 5px;
+  background-color: lime;
+}
+
+.editButton {
+  width: 100px;
+  background-color: magenta;
 }

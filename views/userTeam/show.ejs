@@ -1,11 +1,11 @@
-<h1>This is your team!</h1>
+<h2>This is your team!</h2>
 
 <a href='/pokemon/add' class="rounded-pill">Add to team!</a>
 <% pokemons.forEach(function(pokemon) { %>
   <div class="pokemon">
     <img src='<%= pokemon.imageUrl %>' class="pkImage sprite">
     <ul class="pkInfo">
-      <li class="text-capitalize"><%= pokemon.name %></li> 
+      <li class="text-capitalize pkName"><%= pokemon.name %></li> 
       <li> 
         Notes: <%= pokemon.usersPokemons.dataValues.note %>
       </li>

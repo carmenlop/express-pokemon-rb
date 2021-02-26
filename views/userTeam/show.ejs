@@ -9,17 +9,21 @@
       <li> 
         Notes: <%= pokemon.usersPokemons.dataValues.note %>
       </li>
+
+      <li>
+        HP: <%= pokemon.dataValues.hp %>  Attack: <%= pokemon.dataValues.attack %>  Defense: <%= pokemon.dataValues.defense %>
+      </li>
         
       <li>
         <!-- This is the link to edit form -->
         <a href='/pokemon/edit/<%= pokemon.id %>' class="rounded-pill">Edit</a>
       </li>
-      <!-- This is the DELETE form -->
-      <form method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
-         <input type='submit' value='Delete!' class="btn btn-danger">  
-      </form>    
-      </ul>
-      
+    </ul>
+    
+    <!-- This is the DELETE form -->
+    <form method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
+       <input type='submit' value='Delete!' class="btn btn-danger">  
+    </form>    
   </div>
 <% }); %>
 

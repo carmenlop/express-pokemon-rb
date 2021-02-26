@@ -1,5 +1,5 @@
 
-<form method='POST' action="/pokemon/edit/<%=pokemonInfo.dataValues.id%>/?_method=PUT">
+<form method='POST' action="/pokemon/edit/<%=pokemonInfo.dataValues.id%>">
 	<% pokemons.forEach(pokemon => { %>
 		<% if (pokemon.dataValues.id === pokemonInfo.dataValues.id) { %>
 			<p><%= pokemonInfo.dataValues.name %></p>

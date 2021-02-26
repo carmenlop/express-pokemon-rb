@@ -1,19 +1,30 @@
-<h1>This is your team!</h1>
+<h2>This is your team!</h2>
 
-<a href='/pokemon/add'>Add to team!</a>
-<ul>
-    <% pokemons.forEach(function(pokemon) { %>
-      <img src='<%= pokemon.imageUrl %>'>
-    <li><%= pokemon.name %></li> 
-    <li></li> Notes: <%= pokemon.usersPokemons.dataValues.note %>
-      <!-- This is the link to edit form -->
-      <a href='/pokemon/edit/<%= pokemon.id %>'>Edit</a>
-      <!-- This is the DELETE form -->
-      <form method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
-        <input type='submit' value='Delete!'>  
-      </form>    
-    </li>
-    <% }); %>
-</ul>
+<a href='/pokemon/add' class="rounded-pill">Add to team!</a>
+<% pokemons.forEach(function(pokemon) { %>
+  <div class="pokemon">
+    <img src='<%= pokemon.imageUrl %>' class="pkImage sprite">
+    <ul class="pkInfo">
+      <li class="text-capitalize pkName"><%= pokemon.name %></li> 
+      <li> 
+        Notes: <%= pokemon.usersPokemons.dataValues.note %>
+      </li>
+
+      <li>
+        HP: <%= pokemon.dataValues.hp %>  Attack: <%= pokemon.dataValues.attack %>  Defense: <%= pokemon.dataValues.defense %>
+      </li>
+        
+      <li>
+        <!-- This is the link to edit form -->
+        <a href='/pokemon/edit/<%= pokemon.id %>' class="rounded-pill">Edit</a>
+      </li>
+    </ul>
+    
+    <!-- This is the DELETE form -->
+    <form method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
+       <input type='submit' value='Delete!' class="btn btn-danger">  
+    </form>    
+  </div>
+<% }); %>
 
 

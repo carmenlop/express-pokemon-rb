@@ -1,6 +1,11 @@
 
-<form method="POST" action="/edit/<%=usersPokemons.pokemonId%>/?_method=PUT">
-	<label>Notes</label>
-	<input type="text" name="note" value="<%= usersPokemons.note %>">
-	<input type="submit">
+<form method='POST' action="/pokemon/edit/<%=pokemonInfo.dataValues.id%>/?_method=PUT">
+	<% pokemons.forEach(pokemon => { %>
+		<% if (pokemon.dataValues.id === pokemonInfo.dataValues.id) { %>
+			<p><%= pokemonInfo.dataValues.name %></p>
+			<label for="pokemonNotes">Notes</label>
+    		<input id="pokemonNotes" type="text" name="pokemonNotes" value="<%= pokemon.usersPokemons.dataValues.note %>">
+			<input type="submit">	
+		<% } %>	
+	<% }) %>
 </form>

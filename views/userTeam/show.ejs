@@ -1,24 +1,18 @@
 <h1>This is your team!</h1>
-<!-- <ul>
-    <% pokemons.forEach((pokemon) => { %>
-    <li>
-        <%= pokemon.dataValues.name %>
-    </li> 
-<% }) %>       
-</ul> -->
 
-
-
-</form>
+<a href='/pokemon/add'>Add to team!</a>
 <ul>
     <% pokemons.forEach(function(pokemon) { %>
-    <li><%= pokemon.name %> 
-      <!-- This is the link to this dino's edit form -->
-      <a href='/pokemon/edit/<%=pokemon.id%>'>Edit</a>
+      <img src='<%= pokemon.imageUrl %>'>
+    <li><%= pokemon.name %> Notes: <%= pokemon.usersPokemons.dataValues.note %>
+      <!-- This is the link to edit form -->
+      <a href='/pokemon/edit/<%= pokemon.id %>'>Edit</a>
       <!-- This is the DELETE form -->
-      <form method='POST' action='/pokemon/<%= pokemon.name %>/?_method=DELETE'>
+      <form method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
         <input type='submit' value='Delete!'>  
       </form>    
     </li>
     <% }); %>
 </ul>
+
+

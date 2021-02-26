@@ -44,7 +44,7 @@ router.post('/', isLoggedIn, (req, res) => {
         })
 })
 
-
+// GET shows EDIT page
 router.get('/edit/:id', isLoggedIn, (req, res) => {
     db.user.findOne ({
         where: {id: req.user.dataValues.id}
@@ -61,40 +61,20 @@ router.get('/edit/:id', isLoggedIn, (req, res) => {
     })
 })
 
-// router.post('/edit/:id', isLoggedIn, (req, res) => {
-//     db.user.findOne ({
-//         where: {id: req.user.dataValues.id}
-//     }).then((foundUser) => {
-//         db.pokemon.findOne ({
-//             where: {
-//                 name: req.body.pokemonName
-//             }
-//         }).then((foundPokemon) => {
-//             foundUser.addPokemon(foundPokemon).then((relationInfo) => {
-//                 db.usersPokemons.update({
-//                     note: req.body.pokemonNotes
-//                 }, { where: {
-//                     pokemonId: relationInfo[0].dataValues.pokemonId
-//                 }
-//                 })
-//                 res.redirect('/pokemon')
-//             })
-//         })
-//         })
-// })
+// POST edits usersPokemons notes and redirects back to pokemon team page
+router.post('/edit/:id', isLoggedIn, (req, res) => {
+    db.usersPokemons.update({
+        note: req.body.pokemonNotes 
+    },  { where: {
+                userId: req.user.dataValues.id,
+                pokemonId: req.params.id
+            }
+        }).then(info => {
+            res.redirect('/pokemon')
+        })
 
+})
 
-// router.get('/edit', (req, res) => {
-//     db.usersPokemons.update({
-//         note: req.body.note
-//         }, {
-//         where: { pokemonId: req.params.id }
-//   }).then((updatedUsersPokemons) => {
-//       console.log("___________")
-//       console.log(updatedUsersPokemons)
-//       res.render('userTeam/edit.ejs', { usersPokemons: updatedUsersPokemons })
-//   })
-// })
 
 
 // delete pokemon

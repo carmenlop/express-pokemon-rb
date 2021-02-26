@@ -87,4 +87,13 @@ router.delete('/:id', isLoggedIn, (req, res) => {
 })
 
 
+// Experiemental random add
+// GET show selector page
+router.get('/selector', (req, res) => {
+    res.render('battle/teamSelection.ejs')
+})
+
+
+
+
 module.exports = router;

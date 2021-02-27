@@ -15,8 +15,17 @@ nav ul li {
   margin-right: .3em;
 }
 
+.login {
+  
+  padding-inline-start: 10px;
+}
+
 li {
   list-style-type: none;
+}
+
+a {
+  margin-bottom: 7px;
 }
 
 a:link, a:visited {
@@ -50,7 +59,7 @@ a:hover, a:active {
   grid-template-rows: 100px 100px;
   justify-items: center;
   align-items: center;
-  background-color: yellow;
+  /* background-color: yellow; */
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -69,6 +78,8 @@ a:hover, a:active {
   font-size: large;
   justify-self:stretch;
   display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-template-rows: 2f 1f;
   /* background-color: rgb(98, 98, 214); */
 }
 
@@ -76,14 +87,27 @@ a:hover, a:active {
   font-size: x-large;
 }
 
-ul {
-  padding-inline-start: 0px;
+.listInfo {
+  grid-area: 1 / 1 / 2 / 3;
+  padding-inline-start: 10px;
 }
 
 .sprite {
   height: 160px;
 }
 
-.pokemon:last-child {
-  margin-left:0cm;
+.deleteButton {
+  grid-area: 2 / 2 / 3 / 3;
+  margin: 5px;
+  /* background-color: lime; */
+}
+
+.editButton {
+  grid-area: 2 / 1 / 3 / 2;
+  width: 100px;
+  /* background-color: magenta; */
+}
+
+.form {
+  /* background-color: mediumpurple; */
 }

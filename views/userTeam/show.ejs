@@ -6,21 +6,15 @@
   <div class="pokemon">
     <img src='<%= pokemon.imageUrl %>' class="pkImage sprite">
     <div class="pkInfo">
-    <ul class="listInfo">
+    <ul class="listInfo float-left">
       <li class="text-capitalize pkName"><%= pokemon.name %></li> 
-      <li> 
-        Notes: <%= pokemon.usersPokemons.dataValues.note %>
-      </li>
-
-      <li>
-        HP: <%= pokemon.dataValues.hp %>  Attack: <%= pokemon.dataValues.attack %>  Defense: <%= pokemon.dataValues.defense %>
-      </li>
-
+      <li><b>HP:</b> <%= pokemon.dataValues.hp %> <b>Attack:</b> <%= pokemon.dataValues.attack %> <b>Defense:</b>  <%= pokemon.dataValues.defense %></li>
+      <li>Notes: <%= pokemon.usersPokemons.dataValues.note %></li>
     </ul>
     <!-- This is the link to edit form -->
     <a href='/pokemon/edit/<%= pokemon.id %>' class="editButton rounded-pill float-right">Edit</a>
     <!-- This is the DELETE form -->
-    <form method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
+    <form class="form" method='POST' action='/pokemon/<%= pokemon.id %>/?_method=DELETE'>
        <input type='submit' value='Delete!' class="deleteButton btn btn-danger float-right">  
     </form>    
     

@@ -25,7 +25,7 @@ const bcrypt = require("bcrypt");
         restartIdentity: true
       });
       
-      const pk = 4
+      const pk = 16
       for (let i = 1; i < pk; i++) {
         console.log(i + " i check")
         const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/" + i
@@ -39,7 +39,7 @@ const bcrypt = require("bcrypt");
               
               {
                 name: pokemon.name,
-                imageUrl: pokemon.sprites.front_default,
+                imageUrl: pokemon.sprites.other.dream_world.front_default,
                 hp: pokemon.stats[0].base_stat ,
                 attack: pokemon.stats[1].base_stat,
                 defense: pokemon.stats[2].base_stat ,

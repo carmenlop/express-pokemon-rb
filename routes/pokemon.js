@@ -87,4 +87,37 @@ router.delete('/:id', isLoggedIn, (req, res) => {
 })
 
 
+// Experiemental random add
+// GET show selector page
+router.get('/selector', (req, res) => {
+    db.pokemon.findAll().then(foundPokemons => {
+        res.render('battle/teamSelection.ejs', { pokemons: foundPokemons })
+    })
+})
+
+// POST - adds random pokemon selected
+router.post('/selector/:id', isLoggedIn, (req, res) => {
+    db.user.findOne ({
+        where: {id: req.user.dataValues.id}
+    }).then((foundUser) => {
+        db.pokemon.findOne ({
+            where: {
+                id: req.params.id
+            }
+        }).then((foundPokemon) => {
+            foundUser.addPokemon(foundPokemon).then((relationInfo) => {
+                db.usersPokemons.update({
+                    note: req.body.pokemonNotes
+                }, { where: {
+                    pokemonId: req.params.id,
+                    userId: req.user.dataValues.id
+                }
+                })
+                res.redirect('/pokemon')
+            })
+        })
+        })
+})
+
+
 module.exports = router;

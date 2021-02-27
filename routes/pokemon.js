@@ -116,7 +116,21 @@ router.post('/selector/:id', isLoggedIn, (req, res) => {
                 res.redirect('/pokemon')
             })
         })
+    })
+})
+
+// GET show battle page
+router.get('/battle', isLoggedIn, (req, res) => {
+    db.user.findOne ({
+        where: {id: req.user.dataValues.id}
+    }).then((foundUser) => {
+        foundUser.getPokemons().then(function(foundUserPokemons) {
+            db.pokemon.findAll().then(foundCpuPokemons => {
+                res.render('battle/inBattle.ejs', { cpuTeam: foundCpuPokemons, playerTeam: foundUserPokemons})
+            })
+            //res.render('userTeam/show.ejs', { pokemons: foundPokemons })
         })
+    })
 })
 
 

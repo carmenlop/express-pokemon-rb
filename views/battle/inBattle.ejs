@@ -1,0 +1,35 @@
+
+<% for (let i = 0; i < playerTeam.length; i++) { %>
+    <% let id = Math.floor(Math.random() * 199) + 1 %>
+    <p><%= id %> </p>
+    <% cpuTeam.forEach(pokemon => { %>
+        <% if (pokemon.dataValues.id === id) { %>
+            <div> 
+                <img src='<%= pokemon.dataValues.imageUrl %>' class="pkImage sprite">
+                <div class="pkInfo">
+                <ul class="listInfo float-left">
+                <li class="text-capitalize pkName"><%= pokemon.dataValues.name %></li> 
+                <li><b>HP:</b> <%= pokemon.dataValues.hp %> <b>Attack:</b> <%= pokemon.dataValues.attack %> <b>Defense:</b>  <%= pokemon.dataValues.defense %></li> 
+            </div>
+        <% } %>
+    <% }) %>
+<% } %> 
+
+<h3>-----VS-----</h3>
+
+<% playerTeam.forEach(function(pokemon) { %>
+    <div class="pokemon">
+        <img src='<%= pokemon.imageUrl %>' class="pkImage sprite">
+        <div class="pkInfo">
+            <ul class="listInfo float-left">
+            <li class="text-capitalize pkName"><%= pokemon.name %></li> 
+            <li><b>HP:</b> <%= pokemon.dataValues.hp %> <b>Attack:</b> <%= pokemon.dataValues.attack %> <b>Defense:</b>  <%= pokemon.dataValues.defense %></li>
+            <li>Notes: <%= pokemon.usersPokemons.dataValues.note %></li>
+            </ul>
+        </div>
+    </div>
+<% }) %> 
+
+
+
+    

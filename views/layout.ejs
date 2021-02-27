@@ -11,8 +11,8 @@
   <body>
     <header>
       <!-- bg-info container-fluid position-absolute top-0 end-0 -->
-      <div class="container container-xxl container-fluid">
-      <nav class="navbar nabar-expand-lg navbar-light bg-light">
+      <div class="page-layout container-fluid">
+      <nav class="navbar nabar-expand-lg">
         <div >
           <ul class="login">
             <% if (!currentUser) { %>
@@ -27,11 +27,11 @@
       </nav>
     </div>
     </header>
-    <div class="container container-xxl container-fluid">
+    <div class="page-layout container-fluid" >
       <%- include("partials/alerts") %>
       <div class="container container-sm">
         
-        <h1>Pokemon Random Battles (WIP)</h1>
+        <h1 class= "page-title">Pokemon Team Builder</h1>
         <%- body %>
         <!-- Bootstrap script links -->
       </div>

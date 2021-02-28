@@ -1,5 +1,5 @@
 # Pokemon Team Builder
-An application where a user can create a profile and build a team with their battle ready pokemon, once their team is built the user is able to look at their individual pokemon’s stats and add/delete members to their pokemon team. There is a feature where the user can get a random Pokemon to display and they decide if they want to add the Pokemon to their team or skip to the next random Pokemon. Users can also add/edit notes for each Pokemon.
+Pokemon Team Builder is an application where a user can create a profile and build a team with their battle ready Pokemon. Once their team is built the user is able to look at their individual Pokemon’s stats and add/delete members to their Pokemon team. There is a feature where the user can get a random Pokemon to display and they decide if they want to add the Pokemon to their team or skip to the next random Pokemon. Users can also add/edit notes for each Pokemon.
 
 ## Link to application
 
@@ -26,15 +26,15 @@ An application where a user can create a profile and build a team with their bat
     * method override
 
 ## Installation Instructions 
-#### 1. Create a new repo on Github and fork/clone this repository 
+1. Create a new repo on Github and fork/clone this repository 
 
-#### 2. Install node modules from the package.json by running `npm install`. 
+2. Install node modules from the package.json by running `npm install`. 
 
-#### 3. Make a .env file and add a session secret formatted the following way `SESSION_SECRET= `
+3. Make a .env file and add a session secret formatted the following way `SESSION_SECRET= `
 
-#### 4. Edit your config file (if necessary) with user name, password, and database information.
+4. Edit your config file (if necessary) with user name, password, and database information.
 
-#### 5. Create database by running `createdb express_pokemon_rb`. Run `sequelize db:seed --seed seeders/20210223220429-pokemonInfo.js` to fill models with data. 
+5. Create database by running `createdb express_pokemon_rb`. Run `sequelize db:seed --seed seeders/20210223220429-pokemonInfo.js` to fill models with data. 
 
 
 ## User Stories

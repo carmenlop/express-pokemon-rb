@@ -2,6 +2,7 @@
 Pokemon Team Builder is an application where a user can create a profile and build a team with their battle ready Pokemon. Once their team is built the user is able to look at their individual Pokemon’s stats and add/delete members to their Pokemon team. There is a feature where the user can get a random Pokemon to display and they decide if they want to add the Pokemon to their team or skip to the next random Pokemon. Users can also add/edit notes for each Pokemon.
 
 ## Link to application
+https://my-pokemon-team.herokuapp.com/
 
 
 ## Screenshots

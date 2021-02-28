@@ -1,23 +1,25 @@
-<% //let id = 1 %>
 <% let id = Math.floor(Math.random() * 151) + 1 %>
+
 <% pokemons.forEach(pokemon => { %>
     <% if (pokemon.dataValues.id === id) { %>
         <div>
             <form method='POST' action='/pokemon/selector/<%= pokemon.dataValues.id %>'>
+
                 <img src='<%= pokemon.dataValues.imageUrl %>' class="pkImage sprite">
+
                 <div class="pkInfo">
-                <ul class="listInfo float-left">
-                <li class="text-capitalize pkName"><%= pokemon.dataValues.name %></li> 
-                <li><b>HP:</b> <%= pokemon.dataValues.hp %> <b>Attack:</b> <%= pokemon.dataValues.attack %> <b>Defense:</b>  <%= pokemon.dataValues.defense %></li>
-                <label for="pokemonNotes">Notes</label>
-                    <input id="pokemonNotes" type="text" name="pokemonNotes">
-                    <input type="submit" value="Add to team!">
-                </ul>
+                    <ul class="listInfo float-left">
+                        <li class="text-capitalize pkName"><%= pokemon.dataValues.name %></li> 
+                        <li><b>HP:</b> <%= pokemon.dataValues.hp %> <b>Attack:</b> <%= pokemon.dataValues.attack %> <b>Defense:</b>  <%= pokemon.dataValues.defense %></li>
+                        <label for="pokemonNotes">Notes</label>
+                        <input id="pokemonNotes" type="text" name="pokemonNotes">
+                        <input type="submit" value="Add to team!">
+                    </ul>
             </form>
+            
             <form class="form" action='/pokemon'>
                 <input type='submit' value='No thanks!'>  
-             </form>   
-                      
+             </form>                         
         </div>
     
     <% } %>

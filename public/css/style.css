@@ -6,7 +6,7 @@ url('https://fonts.googleapis.com/css?family=Roboto:wght@300');
 }
 
 body {
-  background-color: rgb(39, 147, 180);
+  background-color: lightgray;
 }
 
 nav ul li {
@@ -108,6 +108,16 @@ a:hover, a:active {
   /* background-color: magenta; */
 }
 
-.form {
-  /* background-color: mediumpurple; */
+
+
+.homepage {
+  width: 100%;
+  padding-right: 50px;
+  padding-left: 50px;
+  
+}
+
+.page-layout{
+  width:80%;
+  background-color: lightgray;
 }

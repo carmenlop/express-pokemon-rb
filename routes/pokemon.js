@@ -40,6 +40,9 @@ router.post('/', isLoggedIn, (req, res) => {
                 }
                 })
                 res.redirect('/pokemon')
+            }).catch(error => {
+                req.flash('error', 'Check spelling')
+                res.redirect('/pokemon/add')
             })
         })
         })

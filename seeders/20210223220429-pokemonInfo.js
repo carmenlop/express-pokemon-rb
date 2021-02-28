@@ -25,7 +25,7 @@ const bcrypt = require("bcrypt");
         restartIdentity: true
       });
       
-      const pk = 200
+      const pk = 152
       for (let i = 1; i < pk; i++) {
         console.log(i + " i check")
         const pokemonUrl = "https://pokeapi.co/api/v2/pokemon/" + i
@@ -49,10 +49,6 @@ const bcrypt = require("bcrypt");
               },
             ], {returning: true})
             console.log("bulk pokemons insert: ", bulkPokemons);
-            
-            if (i === (pk -1)) {
-              
-            }
         })
       }
 

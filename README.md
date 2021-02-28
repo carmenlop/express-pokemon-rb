@@ -5,7 +5,12 @@ An application where a user can create a profile and build a team with their bat
 
 
 ## Screenshots
-
+![screenshot](/public/assets/page_1.jpg)
+![screenshot](/public/assets/page_3.jpg)
+![screenshot](/public/assets/page_2.jpg)
+![screenshot](/public/assets/page_4.jpg)
+![screenshot](/public/assets/page_5.jpg)
+![screenshot](/public/assets/page_6.jpg)
 
 ## Technologies Used
 * Javascript
